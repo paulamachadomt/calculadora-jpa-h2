@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #operador, input {
+            font-size: 20px;
+        }
+        #operador {
+            font-weight: bold;
+        }
+    </style>
+    <title>Calculadora</title>
+</head>
+<body>
+    <h1>Calculadora</h1>
+    <h3>
+      Digite dois valores, selecione um operador aritmético e clique em
+      Calcular:
+    </h3>
+    <form method="POST" action="/calcular">
+      <input type="text" name="a" id="a" placeholder="Digite um valor" />
+      <select name="operador" id="operador">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+      </select>
+      <input type="text" name="b" id="b" placeholder="Digite um valor" />
+      <input type="submit" id="button-calcular" value="Calcular" />
+    </form>
+
+    <h2 th:if="${resultado != null}" th:text="${resultado}"></h2>
+
+    <ul th:if="${historico !=null}"> 
+        <li th:each="item : ${historico}" th:text="${item.operacao}"></li>
+    </ul>    
+</body>
+</html>
